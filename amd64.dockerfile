@@ -23,7 +23,8 @@
     # :: docker start and health script
         RUN chmod +x \
             && /usr/local/bin/entrypoint.sh \
-            && /usr/local/bin/healthcheck.sh
+            && /usr/local/bin/healthcheck.sh \
+            && /usr/local/bin/get-public-ip.sh
 
 # :: Volumes
     VOLUME ["/coturn/etc"]
@@ -34,4 +35,4 @@
 # :: Start
     USER coturn
     ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
-    CMD ["--log-file=stdout"]
+    CMD ["--log-file=stdout", "--external-ip=$(get-public-ip)"]
