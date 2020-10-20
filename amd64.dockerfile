@@ -17,7 +17,8 @@
             /coturn/run \
             /coturn/var
 
-    COPY src /
+    # :: docker copy source
+        COPY src /
 
     # :: docker -u 1000:1000 (no root initiative)
         RUN chown -R coturn:coturn \
