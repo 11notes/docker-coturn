@@ -12,13 +12,16 @@
         && install -d -o coturn -g coturn /coturn \
         && mkdir -p \
             /coturn/etc \
-            /coturn/ssl
+            /coturn/ssl \
+            /coturn/run \
+            /coturn/var
 
     COPY src /
 
     # :: docker -u 1000:1000 (no root initiative)
         RUN chown -R coturn:coturn \
-            /coturn
+            /coturn \
+            /var/lib/coturn
 
     # :: docker start and health script
         RUN chmod +x \
@@ -35,4 +38,4 @@
 # :: Start
     USER coturn
     ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
-    CMD ["--log-file=stdout", "--external-ip=$(get-public-ip)"]
+    CMD ["--db=/coturn/var", "--pidfile=/coturn/run/turnserver.pid", "--log-file=stdout", "--external-ip=$(get-public-ip)"]
