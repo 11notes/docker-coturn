@@ -17,7 +17,7 @@
             /coturn/run \
             /coturn/var
 
-    COPY src /
+    COPY ./src /
 
     # :: docker -u 1000:1000 (no root initiative)
         RUN chown -R coturn:coturn \
@@ -39,4 +39,4 @@
 # :: Start
     USER coturn
     ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
-    CMD ["--db=/coturn/var", "--pidfile=/coturn/run/turnserver.pid", "--log-file=stdout", "--external-ip=$(get-public-ip)"]
+    CMD ["--db=/coturn/var/sqlite.db", "--pidfile=/coturn/run/turnserver.pid", "--log-file=stdout", "--external-ip=$(get-public-ip)"]
