@@ -1,11 +1,12 @@
 # :: Header
     FROM alpine:3.12
+    ENV COTURN_VERSION="4.5.1.3-r0"
 
 # :: Run
     USER root
 
     RUN apk --update --no-cache add \
-            coturn \
+            coturn=${COTURN_VERSION} \
             curl \
         && addgroup --gid 1000 coturn \
         && adduser --uid 1000 -H -D -G coturn -h /coturn coturn \
