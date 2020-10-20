@@ -26,9 +26,9 @@
 
     # :: docker start and health script
         RUN chmod +x \
-            && /usr/local/bin/entrypoint.sh \
-            && /usr/local/bin/healthcheck.sh \
-            && /usr/local/bin/get-public-ip.sh
+            /usr/local/bin/entrypoint.sh \
+            /usr/local/bin/healthcheck.sh \
+            /usr/local/bin/get-public-ip.sh
 
 # :: Volumes
     VOLUME ["/coturn/etc"]
