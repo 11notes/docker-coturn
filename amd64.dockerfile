@@ -40,4 +40,4 @@
 # :: Start
     USER coturn
     ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
-    CMD ["--db=/coturn/var/sqlite.db", "--pidfile=/coturn/run/turnserver.pid", "--log-file=stdout", "--external-ip=$(get-public-ip)"]
+    CMD ["-c /coturn/etc/turnserver.conf", "--db=/coturn/var/sqlite.db", "--pidfile=/coturn/run/turnserver.pid", "--log-file=stdout", "--external-ip=$(curl -4 https://ifconfig.me 2>/dev/null)"]
