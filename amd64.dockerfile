@@ -41,4 +41,4 @@
     RUN chmod +x /usr/local/bin/entrypoint.sh
     USER coturn
     ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
-    CMD ["-c /coturn/etc/turnserver.conf", "--db=/coturn/var/sqlite.db", "--pidfile=/coturn/run/turnserver.pid", "--log-file=stdout", "--external-ip=$(curl -4 https://ifconfig.me 2>/dev/null)"]
+    CMD ["turnserver", "-c /coturn/etc/turnserver.conf", "--db=/coturn/var/sqlite.db", "--pidfile=/coturn/run/turnserver.pid", "--log-file=stdout"]
