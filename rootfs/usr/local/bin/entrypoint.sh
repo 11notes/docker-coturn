@@ -1,2 +1,2 @@
 #!/bin/ash
-exec "$@"
+set -- turnserver "$@"
