@@ -41,4 +41,3 @@
     RUN chmod +x /usr/local/bin/entrypoint.sh
     USER coturn
     ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
-    CMD ["turnserver", "-c /coturn/etc/turnserver.conf", "--db=/coturn/var/sqlite.db", "--pidfile=/coturn/run/turnserver.pid", "--log-file=stdout"]
