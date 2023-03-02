@@ -1,6 +1,6 @@
 # :: Header
   FROM alpine:latest
-  ENV COTURN_VERSION="4.5.2-r3"
+  ENV COTURN="4.5.2-r3"
 
 # :: Run
   USER root
@@ -20,7 +20,7 @@
   # :: install
     RUN set -ex; \
       apk --update --no-cache add \
-        coturn=${COTURN_VERSION}
+        coturn=${COTURN}
 
   # :: copy root filesystem changes
     COPY ./rootfs /
