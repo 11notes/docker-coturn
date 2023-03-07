@@ -1,2 +1,3 @@
 #!/bin/ash
-curl --max-time 5 -kILs --fail http://localhost:8080
+  if [ -z "${WEBMGMT_PORT}" ]; then WEBMGMT_PORT=8080; fi
+  curl --max-time 5 -kILs --fail https://localhost:${WEBMGMT_PORT}
